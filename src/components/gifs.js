@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "./generics/navigation/navigation";
 import GridGifs from "./generics/grid-gif/grid-gif";
 import Search from "./generics/search/search";
-
+import  {CONFIG}  from '../config/api-info';
 import request from "superagent";
 
 class Gifs extends React.Component {
@@ -16,10 +16,8 @@ class Gifs extends React.Component {
   }
 
   handleTermChange = (word) => {
-    const url = `http://api.giphy.com/v1/gifs/search?q=${word.replace(
-      /\s/g,
-      "+"
-    )}&api_key=xHLtPO1DiNWG8Vq8D5DHCCeQsIiT0DSF`;
+	// const url = CONFIG.API_SEARCH ${word.replace(/\s/g,"+")}&api_key;
+    const url = CONFIG.API_SEARCH + `${word.replace(/\s/g,"+")}&api_key=`+CONFIG.KEYAPI
 
     request.get(url, (err, res) => {
       this.setState({ gifs: res.body.data, word: word });

@@ -3,6 +3,8 @@ import Navigation from "./generics/navigation/navigation";
 import GridGifs from "./generics/grid-gif/grid-gif";
 import Search from "./generics/search/search";
 
+import  {CONFIG}  from '../config/api-info';
+
 import request from "superagent";
 
 class TopGifs extends React.Component {
@@ -17,8 +19,8 @@ class TopGifs extends React.Component {
     this.handleTermChange();
   }
 
-  handleTermChange = () => {
-    const url = `http://api.giphy.com/v1/gifs/trending?q=&api_key=xHLtPO1DiNWG8Vq8D5DHCCeQsIiT0DSF`;
+  handleTermChange = () => {	  
+	const url = CONFIG.API_TRENDING + CONFIG.KEYAPI;
 
     request.get(url, (err, res) => {
       this.setState({ gifs: res.body.data });
