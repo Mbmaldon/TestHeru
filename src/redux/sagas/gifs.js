@@ -11,7 +11,7 @@ function* getGifs({ payload }) {
   try {
     const results = yield call(
       apiCall,
-      "http://api.giphy.com/v1/gifs/trending?q=&api_key=xHLtPO1DiNWG8Vq8D5DHCCeQsIiT0DSF"
+      "https://api.giphy.com/v1/gifs/trending?q=&api_key=xHLtPO1DiNWG8Vq8D5DHCCeQsIiT0DSF"
     );
     console.log(results);
     yield put({ type: SUCCESS_GET_GIFS, results });
